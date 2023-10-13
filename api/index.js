@@ -14,7 +14,17 @@ const fs = require("fs");
 const Post = require("./models/Post");
 const postModel = require("./models/Post");
 
-app.use(cors({ credentials: true, origin: "https://6528b5d9226bfb58b15cb092--capable-custard-f125c8.netlify.app" }));
+app.use(cors({
+  credentials: true,
+  origin: function(origin, callback) {
+    const allowedOrigins = ["https://techblogaf.netlify.app/", "https://6528b5d9226bfb58b15cb092--capable-custard-f125c8.netlify.app"];
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
