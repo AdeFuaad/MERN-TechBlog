@@ -14,7 +14,7 @@ const fs = require("fs");
 const Post = require("./models/Post");
 const postModel = require("./models/Post");
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://techblogaf.netlify.app/" }));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
